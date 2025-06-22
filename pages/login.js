@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/lib/firebase"; // pastikan path ini benar sesuai struktur folder kamu
+import { auth } from "@/lib/firebase"; // pastikan path ini benar
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -17,7 +17,7 @@ const Login = () => {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
             console.log("Login berhasil:", user);
-            router.push("/redirect"); // arahkan ke halaman setelah login
+            router.push("/redirect");
         } catch (error) {
             console.error("Login gagal:", error.message);
             setError("Email atau password salah.");
@@ -52,20 +52,16 @@ const Login = () => {
                     Login
                 </button>
             </form>
-                        </form>
 
-{/* Tambahan teks email contoh */}
-<div className="mt-6 text-sm text-gray-600 text-center">
-    <p>Gunakan akun berikut untuk login:</p>
-    <p>staff@gmail.com</p>
-    <p>password = 123456</p>
-    <p>manager@gmail.com</p>
-    <p>password = 123456</p>
-    <p>admin@gmail.com</p>
-    <p>password = 123456</p>
-</div>
-
+            {/* Info akun contoh */}
+            <div className="mt-6 text-sm text-gray-600 text-center">
+                <p>Gunakan akun berikut untuk login:</p>
+                <p>staff@gmail.com (123456)</p>
+                <p>manager@gmail.com (123456)</p>
+                <p>admin@gmail.com (123456)</p>
+            </div>
         </div>
     );
 };
+
 export default Login;
