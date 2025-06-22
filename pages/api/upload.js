@@ -1,6 +1,3 @@
-export const config = {
-  runtime: 'nodejs',
-};
 import nextConnect from 'next-connect';
 import multer from 'multer';
 import { v2 as cloudinary } from 'cloudinary';
@@ -34,7 +31,7 @@ apiRoute.post(async (req, res) => {
     }
 
     try {
-        const uploadResult = await cloudinary.uploader.upload_stream(
+        const uploadStream = cloudinary.uploader.upload_stream(
             { folder: 'produk' },
             (error, result) => {
                 if (error) return res.status(500).json({ error: error.message });
@@ -42,18 +39,19 @@ apiRoute.post(async (req, res) => {
             }
         );
 
-        // ini untuk membaca buffer (karena kita pakai memoryStorage)
-        uploadResult.end(file.buffer);
+        uploadStream.end(file.buffer);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Terjadi kesalahan saat upload' });
     }
 });
 
+// ✅ Gabungan config disini
 export const config = {
-    api: {
-        bodyParser: false,
-    },
+  runtime: 'nodejs',
+  api: {
+    bodyParser: false,
+  },
 };
 
 export default apiRoute;
