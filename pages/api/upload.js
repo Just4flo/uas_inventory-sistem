@@ -1,3 +1,6 @@
+export const config = {
+  runtime: 'nodejs',
+};
 import nextConnect from 'next-connect';
 import multer from 'multer';
 import { v2 as cloudinary } from 'cloudinary';
