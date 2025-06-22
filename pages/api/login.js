@@ -1,3 +1,6 @@
+export const config = {
+  runtime: 'nodejs',
+};
 import { auth, db } from "../../lib/firebase"; // Perbaikan import
 
 export default async function handler(req, res) {
