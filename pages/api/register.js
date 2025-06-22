@@ -1,3 +1,6 @@
+export const config = {
+  runtime: 'nodejs',
+};
 import { auth, firestore } from "../../lib/firebase"; // Firebase configuration import
 
 export default async function handler(req, res) {
