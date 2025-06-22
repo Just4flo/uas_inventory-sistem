@@ -52,6 +52,19 @@ const Login = () => {
                     Login
                 </button>
             </form>
+                        </form>
+
+{/* Tambahan teks email contoh */}
+<div className="mt-6 text-sm text-gray-600 text-center">
+    <p>Gunakan akun berikut untuk login:</p>
+    <p>staff@gmail.com</p>
+    <p>password = 123456</p>
+    <p>manager@gmail.com</p>
+    <p>password = 123456</p>
+    <p>admin@gmail.com</p>
+    <p>password = 123456</p>
+</div>
+
         </div>
     );
 };
