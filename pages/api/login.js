@@ -1,4 +1,4 @@
-import { auth, firestore } from "../../lib/firebase"; // Firebase configuration import
+import { auth, db } from "../../lib/firebase"; // Perbaikan import
 
 export default async function handler(req, res) {
     if (req.method === "POST") {
@@ -12,7 +12,8 @@ export default async function handler(req, res) {
             const user = userCredential.user;
 
             // Ambil data role pengguna dari Firestore
-            const userDoc = await firestore.collection("users").doc(user.uid).get();
+const userDoc = await db.collection("users").doc(user.uid).get();
+
 
             if (!userDoc.exists) {
                 return res.status(404).json({ success: false, message: "User data not found in Firestore" });
